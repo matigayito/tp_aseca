@@ -12,7 +12,7 @@ export class UserService {
 
     public async createUser(username:String, password:String) {
         try {
-            return await this.userRepository.createUser({username: username as string, password: password as string});
+            return this.userRepository.createUser({username: username as string, password: password as string});
         } catch (e) {
             throw new DatabaseError(e.message)
         }
@@ -20,7 +20,7 @@ export class UserService {
 
     public async getUsers() {
         try {
-            return await this.userRepository.getAllUsers()
+            return this.userRepository.getAllUsers()
         } catch (e) {
             throw new DatabaseError(e.message)
         }
