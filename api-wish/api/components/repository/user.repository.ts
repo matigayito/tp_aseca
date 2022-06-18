@@ -14,6 +14,8 @@ export class UserRepository {
             data: {
                 username: user.username,
                 password: user.password,
+                ageGroup: user.ageGroup,
+                sex: user.sex
             }
         })
     }

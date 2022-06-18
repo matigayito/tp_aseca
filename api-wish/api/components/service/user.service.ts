@@ -10,9 +10,16 @@ export class UserService {
         this.userRepository = new UserRepository(ctx);
     }
 
-    public createUser(username:String, password:String) {
+    public createUser(username:String, password:String, ageGroup:number, sex:Boolean) {
         try {
-            return this.userRepository.createUser({username: username as string, password: password as string});
+            return this.userRepository.createUser(
+                {
+                    username: username as string,
+                    password: password as string,
+                    ageGroup: ageGroup as number,
+                    sex: sex as boolean
+                }
+            );
         } catch (e) {
             throw new DatabaseError(e.message)
         }
