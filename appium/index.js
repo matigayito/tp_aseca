@@ -7,7 +7,7 @@ const opts = {
       platformName: "Android",
       platformVersion: "11",
       deviceName: "Android Emulator",
-      app: "./appium/ApiDemos-debug.apk",
+      app: "./demo.apk",
       appPackage: "io.appium.android.apis",
       appActivity: ".view.TextFields",
       automationName: "UiAutomator2"
@@ -16,6 +16,7 @@ const opts = {
   
   async function main () {
     const client = await wdio.remote(opts);
+    var assert = require('assert');
 
     const field = await client.$("android.widget.EditText");
     await field.setValue("Hello World!");
