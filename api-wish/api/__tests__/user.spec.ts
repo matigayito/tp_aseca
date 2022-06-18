@@ -11,13 +11,12 @@ beforeEach(() => {
     userService = new UserService(ctx);
 })
 
-test('should create a new item', async () => {
+test('should create a new user', async () => {
     const user = {
         username: "test",
         password: "test"
     }
 
-    console.log(userService)
     const result = await userService.createUser(user.username, user.password);
     console.log(result)
     await expect(result).resolves.toEqual(user);

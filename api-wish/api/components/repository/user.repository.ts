@@ -12,7 +12,7 @@ export class UserRepository {
         return this.context.prisma.user.create({
             data: {
                 username: user.username,
-                password: user.password
+                password: user.password,
             }
         })
     }

@@ -1,3 +1,4 @@
+import { WishlistService } from './../service/wishlist.service';
 import { Request, Response } from 'express';
 import { ValidationError } from "../utils/errors";
 import { OK } from "../utils/status-codes";
@@ -22,5 +23,4 @@ export class UserController {
     public async getAllUsers(req: Request, res: Response) {
         return res.status(OK).json(await this.userService.getUsers())
     }
-
 }

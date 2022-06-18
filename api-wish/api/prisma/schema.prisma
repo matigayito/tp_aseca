@@ -11,4 +11,55 @@ model User {
   id Int @id @default(autoincrement())
   username String
   password String
+  whishlist Wishlist[]
+  likedCategories UserCategories[]
+}
+
+model Wishlist {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  products ProductsInWishlist[]
+}
+
+model Product {
+  id Int @id @default(autoincrement())
+  name String
+  price Int
+  discount Int
+  category ProductsCategory[]
+  wishlists ProductsInWishlist[]
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  name String
+  products ProductsCategory[]
+  likedByUser UserCategories[]
+}
+
+// Many to many relations
+
+model ProductsCategory {
+  products Product @relation(fields: [productId], references: [id])
+  productId Int
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  @@id([productId, categoryId])
+}
+
+model ProductsInWishlist {
+  products Product @relation(fields: [productId], references: [id])
+  productId Int
+  wishlist Wishlist @relation(fields: [wishlistId], references: [id])
+  wishlistId Int
+  @@id([productId, wishlistId])
+}
+
+model UserCategories {
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  @@id([userId, categoryId])
 }
