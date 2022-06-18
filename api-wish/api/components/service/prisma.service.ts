@@ -16,7 +16,6 @@ export const createContext = (): Context => {
 }
 
 export const createMockContext = (): MockContext => {
-    // @ts-ignore
     return {
         prisma: mockDeep<PrismaClient>(),
     }

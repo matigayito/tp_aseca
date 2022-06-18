@@ -5,19 +5,22 @@ export class UserRepository {
     context: Context
 
     constructor(ctx: Context) {
+        console.log(ctx)
         this.context = ctx;
     }
 
-    createUser(user: any) {
+    async createUser(user: any) {
         return this.context.prisma.user.create({
             data: {
                 username: user.username,
                 password: user.password,
+                ageGroup: user.ageGroup,
+                sex: user.sex
             }
         })
     }
 
-    getAllUsers() {
+    async getAllUsers() {
         return this.context.prisma.user.findMany()
     }
 }

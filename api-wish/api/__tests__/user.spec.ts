@@ -11,13 +11,37 @@ beforeEach(() => {
     userService = new UserService(ctx);
 })
 
-test('should create a new user', async () => {
+test('New users should be created', async () => {
     const user = {
+        id: 1,
         username: "test",
-        password: "test"
+        password: "test",
+        ageGroup: 18,
+        sex: true
     }
 
-    const result = await userService.createUser(user.username, user.password);
-    console.log(result)
+    mockCtx.prisma.user.create.mockResolvedValue(user)
+
+    const result = userService.createUser(user.username, user.password, user.ageGroup, user.sex);
     await expect(result).resolves.toEqual(user);
 });
+
+test('All users should be listed', async () => {
+    const user1 = {
+        id: 1,
+        username: "test",
+        password: "test",
+        ageGroup: 18,
+        sex: true
+    }
+    const user2 = {
+        id: 2,
+        username: "test2",
+        password: "test2",
+        ageGroup: 18,
+        sex: true
+    }
+
+    mockCtx.prisma.user.findMany.mockResolvedValue([user1, user2])
+    await expect(userService.getUsers()).resolves.toEqual([user1, user2])
+})

@@ -16,8 +16,8 @@ export class UserController {
     }
 
     public async registerUser(req: Request, res: Response) {
-        const {username, password} = req.body;
-        return res.status(OK).json(await this.userService.createUser(username, password))
+        const {username, password, ageGroup, sex} = req.body;
+        return res.status(OK).json(await this.userService.createUser(username, password, ageGroup, sex))
     }
 
     public async getAllUsers(req: Request, res: Response) {
