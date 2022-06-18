@@ -18,6 +18,7 @@ apiRouter.get('/user', (req:Request, res:Response) => userController.getAllUsers
 apiRouter.get('/wishlist/:id', (req: Request, res:Response) => wishListController.getUserWishlist(req, res))
 apiRouter.post('/wishlist/:id', (req: Request, res:Response) => wishListController.createWishlist(req, res))
 
+
 app.use(express.json())
 app.use(apiRouter)
 app.listen(5000)
