@@ -1,3 +1,4 @@
+import { ProductController } from './components/controller/product.controller';
 const express = require('express');
 import { UserController } from "./components/controller/user.controller";
 import { WishListController } from './components/controller/wishlist.controller';
@@ -9,6 +10,7 @@ const context = createContext();
 
 const userController = new UserController(context);
 const wishListController = new WishListController(context);
+const productController = new ProductController(context);
 
 const app = express();
 const apiRouter = express.Router();
@@ -17,6 +19,7 @@ apiRouter.post('/user', (req:Request, res:Response) => userController.registerUs
 apiRouter.get('/user', (req:Request, res:Response) => userController.getAllUsers(req, res))
 apiRouter.get('/wishlist/:id', (req: Request, res:Response) => wishListController.getUserWishlist(req, res))
 apiRouter.post('/wishlist/:id', (req: Request, res:Response) => wishListController.createWishlist(req, res))
+apiRouter.post('/products/discount', (req: Request, res:Response) => productController.updateDiscounts(req, res))
 
 
 app.use(express.json())

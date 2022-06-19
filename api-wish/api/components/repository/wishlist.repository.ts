@@ -42,4 +42,16 @@ export class WishlistRepository {
             }
         })
     }
+
+    async findByProductId(productId:any) {
+        return await this.context.prisma.wishlist.findMany({
+            where: {
+                products:{
+                    some: {
+                        productId: productId
+                    }
+                }
+            }
+        })
+    }
 }
