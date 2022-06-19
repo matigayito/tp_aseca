@@ -37,11 +37,26 @@ test('Update discount on product should return product with discount aplied', as
     )
 })
 
-test('Update to not existing discount should fail', () => {
+test('Update to not existing discount should fail', async () => {
     const product = {
         id: 2,
         name: "Remera",
         price: 80,
         discount: 0
     }
+    const discount = 50
+    const productToUpdate = [
+        {
+            productId: 1,
+            discount
+        }
+    ]
+    mockCtx.prisma.product.update.mockResolvedValue({...product, discount})
+    mockCtx.prisma.wishlist.findMany.mock
+    await expect(productService.updateProductDiscounts(productToUpdate)).resolves.toEqual(
+        [{ 
+            product: {...product, discount},
+            usersToNotify: []
+        }]
+    )
 })
