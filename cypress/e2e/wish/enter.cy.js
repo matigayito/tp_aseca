@@ -29,7 +29,7 @@ describe('initiate the test and enter wish frontpage', () => {
         cy.get('#search-btn')
         .click()
 
-        cy.wait(2000)
+        cy.wait(500)
 
         cy.get(':nth-child(1) > .products-feed__product-wrapper > .products-feed__product-media > .products-feed__product-link > .products-feed__product-image')
         .click()
@@ -41,6 +41,25 @@ describe('initiate the test and enter wish frontpage', () => {
     })
 
     it('verify you can enter an item to de cart and proceed to buy it', () => {
+        cy.get('#search')
+        .type('cuaderno')
+
+        cy.get('#search-btn')
+        .click()
+
+        cy.wait(500)
+
+        cy.get(':nth-child(1) > .products-feed__product-wrapper > .products-feed__product-media > .products-feed__product-link > .products-feed__product-image')
+        .click()
+
+        cy.get('#add_to_cart-btn')
+        .click()
+
+        cy.get('#start_checkout-btn')
+        .click()
+
+        cy.get(':nth-child(1) > .uk-grid-small > :nth-child(1) > div > .checkout__section-title')
+        .should('have.text', 'Opciones de envío')
 
     })
 })
