@@ -45,7 +45,7 @@ export class ProductController {
         const id = req.params.id
         const user = await this.userService.findUser(+id)
         const userCategories = await this.userService.getCategories(+id)
-        const categories = userCategories.map(category => category?.name)
+        const categories = userCategories.map((category:any) => category?.name)
         const products = await this.productService.getAllProducts()
         axios.post('http://localhost:4000', {
 
