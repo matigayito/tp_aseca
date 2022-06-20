@@ -16,8 +16,6 @@ jobs:
     defaults:
       run:
         working-directory: ./api-wish
-      with:
-        working-directory: ./api-wish
 
     strategy:
       matrix:
