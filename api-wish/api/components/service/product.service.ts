@@ -21,7 +21,6 @@ export class ProductService {
             try {
                 const updatedProduct = await this.productRepository.updateProductDiscount(discount.productId, discount.discount)
                 const wishlistsWhereProductIs = await this.wishlistRepository.findByProductId(discount.productId)
-                console.log(updatedProduct)
                 return { product: updatedProduct, usersToNotify: wishlistsWhereProductIs.map(wishlist => wishlist.userId) }
             } catch (e) {
                 console.warn(e)

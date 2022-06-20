@@ -5,7 +5,6 @@ export class UserRepository {
     context: Context
 
     constructor(ctx: Context) {
-        console.log(ctx)
         this.context = ctx;
     }
 

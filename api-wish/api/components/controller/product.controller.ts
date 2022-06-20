@@ -24,9 +24,8 @@ export class ProductController {
     }
 
     public async updateDiscounts(req: Request, res: Response, next:NextFunction) {
-        let error = false
-        console.log(req.body)
-        const discounts = req.body?.map((d:any) => {
+        const { discountsArray } = req.body
+        const discounts = discountsArray.map((d:any) => {
             const newDiscount = new Discount(d.productId, d.discount)
             return validate(newDiscount).then(errors => {
                 if (errors.length > 0) {
