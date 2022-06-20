@@ -12,3 +12,4 @@ Al realizar los tests de Appium tuvimos algunos inconvenientes, de los cuales lo
 El objetivo de cypress fue realizar testeos en la pagina de wish.com.ar. Estos se basaban en: demostrar que salta un error con un inicio de sesion incorrecto, demostrar que funicona correctamente el buscador y realizar que se ejecuta correctamente la opcion de proceder al pago del carrito. Todas las tareas fueron realizadas en "enter.cy.js", el cual se encuentra en la carpeta "wish". Los otros archivos con tests se mantuvieron en el proyecto para usarse como referencia al trabajar.
 
 ## Locust
+Logramos generar un test de swarm con locust el cual llama a los endpoints de la api simulada. Estos se encargan de llamar a los gets y posts. Los detalles sobre estos tests se encuentran en el reporte pusheado
