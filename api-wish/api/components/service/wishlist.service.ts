@@ -1,4 +1,5 @@
-import { DatabaseError, NotFoundError } from './../utils/errors';
+import { ErrorCode } from './../utils/error-code';
+import { ErrorException } from './../utils/error-exception';
 import { WishlistRepository } from './../repository/wishlist.repository';
 import { Context } from './prisma.service';
 
@@ -14,7 +15,7 @@ export class WishlistService {
         try {
             return this.wishlistRepository.createWishlist(userId)
         } catch (e) {
-            throw new DatabaseError(e.message)
+            throw new ErrorException(ErrorCode.DatabaseError)
         }
     }
 
@@ -22,7 +23,15 @@ export class WishlistService {
         try {
             return this.wishlistRepository.getUserWishList(userId)
         } catch (e) {
-            throw new NotFoundError(e.message)
+            throw new ErrorException(ErrorCode.NotFound)
+        }
+    }
+
+    public addProductToWishList(productId: number, whishlistId: number) {
+        try {
+            return this.wishlistRepository.addProductToWishlist(productId, whishlistId)
+        } catch (e) {
+            throw new ErrorException(ErrorCode.NotFound)
         }
     }
 }

@@ -38,6 +38,7 @@ model Product {
   name String
   price Int
   discount Int
+  targetAgeGroup Int
   category ProductsCategory[]
   wishlists ProductsInWishlist[]
 }

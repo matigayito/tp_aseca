@@ -1,5 +1,6 @@
+import { ErrorCode } from './../utils/error-code';
+import { ErrorException } from './../utils/error-exception';
 import {UserRepository} from "../repository/user.repository";
-import {DatabaseError, NotFoundError} from "../utils/errors";
 import {Context} from "./prisma.service";
 
 export class UserService {
@@ -21,7 +22,7 @@ export class UserService {
                 }
             );
         } catch (e) {
-            throw new DatabaseError(e.message)
+            throw new ErrorException(ErrorCode.DatabaseError)
         }
     }
 
@@ -29,7 +30,7 @@ export class UserService {
         try {
             return this.userRepository.getAllUsers()
         } catch (e) {
-            throw new DatabaseError(e.message)
+            throw new ErrorException(ErrorCode.DatabaseError)
         }
     }
 
