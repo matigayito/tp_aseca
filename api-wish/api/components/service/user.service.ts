@@ -17,7 +17,7 @@ export class UserService {
                 {
                     username: username as string,
                     password: password as string,
-                    ageGroup: ageGroup as number,
+                    ageGroup: +ageGroup as number,
                     sex: sex as boolean
                 }
             );
