@@ -7,11 +7,11 @@ on:
   push:
     branches: [ "main" ]
     paths: 
-      - './api-wish/**'
+      - './api-wish'
   pull_request:
     branches: [ "main" ]
     paths: 
-      - './api-wish/**'
+      - './api-wish'
 
 jobs:
   build:
