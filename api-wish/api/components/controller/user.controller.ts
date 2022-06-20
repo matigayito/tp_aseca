@@ -1,4 +1,3 @@
-import { WishlistService } from './../service/wishlist.service';
 import { Request, Response, NextFunction } from 'express';
 import { OK } from "../utils/status-codes";
 import { UserService } from "../service/user.service";

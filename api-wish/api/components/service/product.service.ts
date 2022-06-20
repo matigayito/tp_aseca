@@ -27,4 +27,8 @@ export class ProductService {
             }
         }))
     }
+
+    public getAllProducts() {
+        return this.productRepository.getAllProducts()
+    }
 }

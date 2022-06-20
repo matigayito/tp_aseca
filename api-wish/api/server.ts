@@ -22,6 +22,7 @@ app.get('/user/wishlist/:id', (req: Request, res:Response, next:NextFunction) =>
 app.post('/user/wishlist/:id', (req: Request, res:Response, next:NextFunction) => wishListController.createWishlist(req, res, next))
 app.post('/user/wishlist', (req: Request, res:Response, next:NextFunction) => wishListController.addItemToWishlist(req, res, next))
 app.post('/products/discount', (req: Request, res:Response, next:NextFunction) => {productController.updateDiscounts(req, res, next)})
+app.post('/search', (req:Request, res:Response, next:NextFunction) => productController.searchProducts(req, res, next))
 
 app.use(errorHandler)
 app.listen(5000)
