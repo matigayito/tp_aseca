@@ -16,6 +16,8 @@ jobs:
     defaults:
       run:
         working-directory: ./api-wish
+      uses:
+        working-directory: ./api-wish
 
     strategy:
       matrix:
@@ -24,7 +26,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Run tests
+    - name: Run build
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
