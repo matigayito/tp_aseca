@@ -26,6 +26,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: |
-          cd api-wish
-          npm test
+      working-direcory: ./api-wish
+      run: npm test
