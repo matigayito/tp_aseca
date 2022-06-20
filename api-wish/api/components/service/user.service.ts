@@ -45,7 +45,7 @@ export class UserService {
     public getCategories(userId:number) {
         try {
             const userCategories = this.userRepository.getUserCategories(userId)
-            return userCategories.then(categories => Promise.all(categories.map(async category => await this.userRepository.getCategory(category.categoryId))))
+            return userCategories.then(categories => Promise.all(categories.map(async (category:any) => await this.userRepository.getCategory(category.categoryId))))
         } catch (e) {
             throw new ErrorException(ErrorCode.DatabaseError)
         }
