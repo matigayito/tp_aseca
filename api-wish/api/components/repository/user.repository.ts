@@ -22,4 +22,28 @@ export class UserRepository {
     async getAllUsers() {
         return this.context.prisma.user.findMany()
     }
+
+    async findById(id: number) {
+        return this.context.prisma.user.findFirst({
+            where: {
+                id: id
+            }
+        })
+    }
+
+    async getUserCategories(id: number) {
+        return this.context.prisma.userCategories.findMany({
+            where: {
+                userId: id
+            }
+        })
+    }
+
+    async getCategory(id:number) {
+        return this.context.prisma.category.findFirst({
+            where:{
+                id: id
+            }
+        })
+    }
 }

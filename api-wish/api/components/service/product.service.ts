@@ -17,14 +17,18 @@ export class ProductService {
     }
 
     public updateProductDiscounts(discounts: Discount[]){
-        return Promise.all(discounts.map(async discount => {
+        return Promise.all(discounts.map(async (discount:any) => {
             try {
                 const updatedProduct = await this.productRepository.updateProductDiscount(discount.productId, discount.discount)
                 const wishlistsWhereProductIs = await this.wishlistRepository.findByProductId(discount.productId)
-                return { product: updatedProduct, usersToNotify: wishlistsWhereProductIs.map(wishlist => wishlist.userId) }
+                return { product: updatedProduct, usersToNotify: wishlistsWhereProductIs.map((wishlist:any) => wishlist.userId) }
             } catch (e) {
                 console.warn(e)
             }
         }))
+    }
+
+    public getAllProducts() {
+        return this.productRepository.getAllProducts()
     }
 }
